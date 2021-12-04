@@ -3,8 +3,6 @@ require_once '../../../components/main.php';
 require_once '../../../components/mysql.php';
 
 $prepared_post = $mysql->prepare('DELETE FROM post WHERE id=?');
-$id = NULL;
-$content = NULL;
 
 $error = FALSE;
 if($prepared_post === FALSE)
@@ -16,5 +14,3 @@ else if($prepared_post->execute() === FALSE)
 
 if($error !== FALSE)
   exit($error);
-
-header('Location: ../../../');

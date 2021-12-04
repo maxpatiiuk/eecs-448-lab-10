@@ -33,9 +33,10 @@ if(array_key_exists('submit', $_POST)){
   else if($match_count -= 0)
     $error = 'This user does not exist';
 
+  $prepared_check->close();
   $prepared_create = $mysql->prepare('INSERT INTO post(content, user_id) VALUES(?,?)');
 
-  if( $prepared_create === FALSE)
+  if($prepared_create === FALSE)
     $error = 'Failed to create a query.';
   else if($prepared_create->bind_param('ss', $_POST['content'], $_POST['user_id']) === FALSE)
     $error = 'Failed to bind parameters.';

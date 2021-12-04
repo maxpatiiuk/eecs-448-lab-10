@@ -25,16 +25,26 @@ echo $body; ?>
     $error = 'Failed to bind result';
 
   if($error !== FALSE)
-    exit($error);
+    exit($error); ?>
 
-  while ($prepared_posts->fetch()){ ?>
-    <article>
-      <h1>Post:</h1>
-      <p><?=$content?></h2>
-      <br>
-      <a href="../post/delete/?id=<?=$id?>">Remove post</a>
-    </article> <?php
-  } ?>
+  <form> <?php
+
+    while ($prepared_posts->fetch()){ ?>
+      <article>
+        <h1>Post:</h1>
+        <p><?=$content?></h2>
+        <br>
+        <label>
+        <input type="checkbox" name="id" value="<?=$id?>">
+          Delete Post
+        </label>
+      </article> <?php
+    } ?>
+
+    <input type="submit" value="Delete selected posts">
+
+  </form>
+
 
 </main> <?php
 
